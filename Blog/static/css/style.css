@@ -10,9 +10,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #FFF8F1;
     color: #fff;
-    padding: 1em;
+    padding: .25em;
 }
 
 .navbar-brand {
@@ -29,10 +29,41 @@
 }
 
 .nav-link {
-    color: #fff;
+    color: #BB7D3C;
     text-decoration: none;
+    font-family: 'Varela Round';
 }
 
 .nav-link:hover {
     color: #ddd;
+}
+.nav-brand img {
+ width: 75px; /* Change this as needed */
+ vertical-align: middle; margin-right: 10px;
+ }
+
+.posts {
+display: flex;
+justify-content: space-between;
+}
+
+.post {
+margin: 20px;
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+flex: 1 0 calc(33.33%-20px);
+max-width: calc(33.33%-20px);
+height: auto;
+}
+
+.post h2{
+margin-top: 0;
+}
+
+.post img{
+height: auto;
+border-radius: 5px;
+margin-top: 20px;
+width: 100%;
 }
