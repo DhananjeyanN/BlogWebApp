@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='reg-form' xmlns="http://www.w3.org/1999/html">
+    <h1>
+    Create Post
+    </h1>
+    {% include 'partials/alerts.html' %}
+    <form method="post" action="{% url 'create' user.id %}" >
+        {% csrf_token %}
+        <div class = 'form-row'>
+        <label>Title:</label>
+        <input type = 'text' name = 'Title' placeholder = "Title">
+        </div>
+
+        <input type = 'hidden' value = {{user.id}} name = 'Author' placeholder = "Author">
+
+        <div class = 'form-row'>
+        <label>Content:</label>
+            <textarea name = 'Content' placeholder = "Content" rows = 10 cols = 40></textarea>
+        </div>
+
+        <div class = 'form-row'>
+        <label>Upload:</label>
+            <input type = "file" name = 'Image'>
+        </div>
+
+        <div class = 'form-row'>
+        <label>Category:</label>
+            <select name = 'Category'>
+                {% for category in categories %}
+                <option value = {{category.id}}>{{category.category_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class = 'form-row'>
+            <input type = 'submit' value = 'submit'>
+        </div>
+    </form>
+</div>
+{% endblock %}

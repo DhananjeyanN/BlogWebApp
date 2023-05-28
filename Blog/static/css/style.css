@@ -42,6 +42,12 @@
  vertical-align: middle; margin-right: 10px;
  }
 
+footer{
+text-align: center;
+padding: 20px;
+margin: 20px;
+}
+
 .posts {
 display: flex;
 justify-content: space-between;
@@ -66,4 +72,97 @@ height: auto;
 border-radius: 5px;
 margin-top: 20px;
 width: 100%;
+}
+
+.reg-form{
+height: 80vh;
+padding: 50px 550px;
+background-color: light-grey;
+border-radius: 5px;
+}
+
+.form-row{
+margin: 10px;
+padding: 10px;
+
+}
+
+.form-row label{
+margin-right: 20px;
+
+}
+
+.reg-form form{
+border: 2px blue solid;
+border-radius: 10px;
+}
+
+<div class="dashboard">
+    <h1>Dashboard</h1>
+    <div class="user-info">
+        <h2>Welcome, {{ user.username }}</h2>
+        <p><strong>First name:</strong> {{ user.first_name }}</p>
+        <p><strong>Last name:</strong> {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Date of Birth:</strong> {{ user.profile.dob }}</p>
+    </div>
+</div>
+.dashboard {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.user-info {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    padding: 20px;
+}
+
+.user-info h2 {
+    margin-top: 0;
+}
+
+.user-info p {
+    margin-bottom: 0.5em;
+}
+
+.form-field {
+    background-color: #FFF8F1;
+    padding: 2px;
+    margin: 10px;
+}
+
+.messages {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.alert.info {
+    background-color: #d9edf7;
+    color: #31708f;
+}
+
+.alert.error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.alert.success {
+    background-color: #FFF8F1;
+    color: #3c763d;
+}
+
+.alert.warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
 }
