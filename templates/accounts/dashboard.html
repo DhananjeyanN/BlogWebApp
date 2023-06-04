@@ -24,6 +24,10 @@
     </p>
         <img src = '{{ post.image.url }}'>
     <h4> posted by:{{post.author}}</h4>
+    <p>
+        <a href = "{% url 'edit_post' post.id %}" >Edit Post</a>
+        <a href = "{% url 'delete_post' post.id %}" >Delete Post</a>
+    </p>
 </div>
 {% endfor %}
 </main>

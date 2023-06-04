@@ -9,6 +9,7 @@ from social_media.models import Post
 def home(request):
     profile = SiteProfile.objects.all().first()
     posts = Post.objects.all().order_by('-pub_date') # retrieves all objects from database
+
     context = {'profile': profile, 'posts': posts}
     return render(request, 'core/index.html', context=context)
 

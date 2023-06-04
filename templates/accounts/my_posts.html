@@ -14,6 +14,9 @@
     </p>
         <img src = '{{ post.image.url }}'>
     <h4> posted by:{{post.author}}</h4>
+    <p>
+        <a href = "{% url 'edit_post' post.id %}" >Edit Post</a>
+    </p>
 </div>
 {% endfor %}
 </main>

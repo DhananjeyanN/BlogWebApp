@@ -17,6 +17,7 @@
 
 .navbar-brand {
     font-size: 1.5em;
+    font-family: 'Varela Round';
 }
 
 .navbar-nav {
@@ -31,7 +32,6 @@
 .nav-link {
     color: #BB7D3C;
     text-decoration: none;
-    font-family: 'Varela Round';
 }
 
 .nav-link:hover {
@@ -46,36 +46,37 @@ footer{
 text-align: center;
 padding: 20px;
 margin: 20px;
+display:block;
 }
 
 .posts {
 display: flex;
-justify-content: space-between;
+flex-wrap: wrap;
+margin-top:20px;
 }
 
 .post {
-margin: 20px;
-background-color: #fff;
-padding: 20px;
-border-radius: 5px;
-flex: 1 0 calc(33.33%-20px);
-max-width: calc(33.33%-20px);
-height: auto;
+flex-basis: calc(20%-10px);
+margin: 10px;
+width: 275px;
+border: 1px solid blue;
+padding: 10px;
+
 }
 
 .post h2{
-margin-top: 0;
+margin: 10px;
 }
 
 .post img{
 height: auto;
-border-radius: 5px;
-margin-top: 20px;
 width: 100%;
+object-width: cover;
+margin-top:10px;
+margin-bottom:10px;
 }
 
 .reg-form{
-height: 80vh;
 padding: 50px 550px;
 background-color: light-grey;
 border-radius: 5px;
@@ -93,20 +94,10 @@ margin-right: 20px;
 }
 
 .reg-form form{
-border: 2px blue solid;
-border-radius: 10px;
+display:inline-block;
+
 }
 
-<div class="dashboard">
-    <h1>Dashboard</h1>
-    <div class="user-info">
-        <h2>Welcome, {{ user.username }}</h2>
-        <p><strong>First name:</strong> {{ user.first_name }}</p>
-        <p><strong>Last name:</strong> {{ user.last_name }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Date of Birth:</strong> {{ user.profile.dob }}</p>
-    </div>
-</div>
 .dashboard {
     width: 60%;
     margin: 0 auto;
@@ -134,10 +125,25 @@ border-radius: 10px;
     margin: 10px;
 }
 
+.form-button{
+text-align: center;
+}
+
+form button {
+    background-color: grey;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+
+}
+
 .messages {
     width: 80%;
     margin: 0 auto;
     margin-top: 20px;
+    text-align: center;
 }
 
 .alert {
@@ -157,11 +163,21 @@ border-radius: 10px;
 }
 
 .alert.success {
-    background-color: #dff0d8;
+    background-color: #FFF8F1;
     color: #3c763d;
 }
 
 .alert.warning {
     background-color: #fcf8e3;
     color: #8a6d3b;
+}
+
+.comment_text {
+height:100px;
+width:280px;
+}
+
+.like-btn {
+width:5px;
+height:5px;
 }

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class='reg-form' xmlns="http://www.w3.org/1999/html">
+    <h1>
+    Comments
+    </h1>
+    {% include 'partials/alerts.html' %}
+      <div class = 'post'>
+    <h2>
+        {{post.title}}
+    </h2>
+    <p>
+        {{post.content}}
+    </p>
+        <img src = '{{ post.image.url }}'>
+    <h4> posted by:{{post.author}}</h4>
+          {% for comment in comments %}
+          <p>--{{ comment.pub_date }} Comment: {{ comment.text }} by {{ comment.user.first_name }}</p>
+          {% endfor %}
+          <a><img style="height:20px;width:20px" src="{% static 'img/like.png' %}"></a>
+      </div>
+    <h3>Add Comment</h3>
+          <form method="POST">
+              {% csrf_token %}
+              {{ CommentForm.as_p }}
+              <button type="submit">Add Comment</button>
+          </form>
+</div>
+{% endblock %}

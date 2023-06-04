@@ -10,15 +10,16 @@ from social_media.models import Post
 
 # Create your views here.
 
-def register_(request):
+def register(request):
     profile = SiteProfile.objects.all().first()
     if request.method == "POST":
         form = RegistrationForm(request.POST)
-        #print(form)
         if form.is_valid():
             form.password = request.POST.get('password')
-            form.save()
-            #print(user.password)
+            user = form.save(commit=False)
+            password = form.cleaned_data.get('password')
+            user.set_password(password)
+            user.save()
             return redirect('login')
 
     else:
@@ -63,7 +64,7 @@ def dashboard(request):
     return render(request, 'accounts/dashboard.html', context=context)
 
 
-def register(request):
+def register_(request):
     profile = SiteProfile.objects.all().first()
     form = RegistrationForm()
     if request.method == "POST":

@@ -25,5 +25,6 @@ urlpatterns = [
     path('', include('Core.urls')),
     path('accounts/',include('accounts.urls')),
     path('connect/', include('social_media.urls')),
+    path('comments/', include('comments.urls')),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Core',
     'social_media',
     'accounts',
+    'comments'
 ]
 
 MIDDLEWARE = [
