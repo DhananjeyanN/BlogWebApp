@@ -16,7 +16,7 @@
         <img src = '{{ post.image.url }}'>
     <h4> posted by:{{post.author}}</h4>
           {% for comment in comments %}
-          <p>--{{ comment.pub_date }} Comment: {{ comment.text }} by {{ comment.user.first_name }}</p>
+          <p>--{{ comment.pub_date }} Comment: {{ comment.text }} by <a href="{% url 'profile' comment.user.id %}">{{ comment.user.first_name }}</a></p>
           {% endfor %}
           <a><img style="height:20px;width:20px" src="{% static 'img/like.png' %}"></a>
       </div>

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 
+from accounts.models import Profile
 from social_media.models import Post
 
 
@@ -38,5 +39,13 @@ class EditPostForm(forms.ModelForm):
         super(EditPostForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-field'
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['user', 'avatar', 'bio', 'dob']
+
+
 
 

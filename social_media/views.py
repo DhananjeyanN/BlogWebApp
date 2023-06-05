@@ -80,6 +80,7 @@ def post_detail(request, post_id):
     context = {'post': post, 'comments':comments, 'CommentForm':form, 'new_comment':new_comment}
     return render(request, 'SocialMedia/post_detail.html', context=context)
 
+
 def like_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.user in post.likes.all():
@@ -87,6 +88,7 @@ def like_post(request, post_id):
     else:
         post.likes.add(request.user)
     return redirect('home')
+
 
 
 

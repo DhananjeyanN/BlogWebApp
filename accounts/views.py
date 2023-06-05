@@ -1,10 +1,10 @@
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from Core.models import SiteProfile
 from django.contrib import messages, auth
 
-from accounts.forms import RegistrationForm
+from accounts.forms import RegistrationForm, ProfileForm
 from social_media.models import Post
 
 
@@ -113,3 +113,10 @@ def login_(request):
             return redirect('login')
 
     return render(request, 'accounts/login.html', context=context)
+
+
+def profile(request, user_id):
+    user_profile = get_object_or_404(User, id=user_id)
+    profile_form = ProfileForm(instance=user_profile)
+    context = {'user_profile':user_profile, 'profile_form':profile_form}
+    return render(request, context)
