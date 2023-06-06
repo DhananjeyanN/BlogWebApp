@@ -44,7 +44,7 @@ class EditPostForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['user', 'avatar', 'bio', 'dob']
+        fields = ['avatar', 'bio', 'dob']
 
 
 

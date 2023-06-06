@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>
+    Profile
+</h1>
+<div>
+    <div class="user-info">
+        <h2>Welcome, {{ user_profile.username }}</h2>
+        <img src="{{ user_profile.profile.avatar.url }}" alt="{{ user_profile.first_name }}" style="width:80px; height:80px; object-fit:cover; border-radius:80px;">
+        <p><strong>First name:</strong> {{ user_profile.first_name }}</p>
+        <p><strong>Last name:</strong> {{ user_profile.last_name }}</p>
+        <p><strong>Email:</strong> {{ user_profile.email }}</p>
+        <p><strong>Date of Birth:</strong> {{ user.profile.dob }}</p>
+        <a href="{% url 'add_friend' user_profile.id %}">Add Friend</a>
+    </div>
+</div>
+{% endblock %}

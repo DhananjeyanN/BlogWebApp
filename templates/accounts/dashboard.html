@@ -6,10 +6,12 @@
     <h1>Dashboard</h1>
     <div class="user-info">
         <h2>Welcome, {{ user.username }}</h2>
+        <img src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}" style="width:80px; height:80px; object-fit:cover; border-radius:80px;">
         <p><strong>First name:</strong> {{ user.first_name }}</p>
         <p><strong>Last name:</strong> {{ user.last_name }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
         <p><strong>Date of Birth:</strong> {{ user.profile.dob }}</p>
+        <a href="{% url 'edit_profile' %}">Edit Profile</a>
     </div>
 </div>
 

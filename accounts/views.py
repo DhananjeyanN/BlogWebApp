@@ -5,6 +5,8 @@ from Core.models import SiteProfile
 from django.contrib import messages, auth
 
 from accounts.forms import RegistrationForm, ProfileForm
+from accounts.models import Profile
+from friends.models import Friend
 from social_media.models import Post
 
 
@@ -60,6 +62,8 @@ def logout(request):
 
 def dashboard(request):
     profile = SiteProfile.objects.all().first()
+    friends = Friend.objects.filter(current_user = request.user)
+    print(friends.first().users)
     context = {'profile':profile}
     return render(request, 'accounts/dashboard.html', context=context)
 
@@ -117,6 +121,23 @@ def login_(request):
 
 def profile(request, user_id):
     user_profile = get_object_or_404(User, id=user_id)
-    profile_form = ProfileForm(instance=user_profile)
-    context = {'user_profile':user_profile, 'profile_form':profile_form}
-    return render(request, context)
+    context = {'user_profile':user_profile}
+    return render(request, 'accounts/profile.html',context)
+
+
+def edit_profile(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = ProfileForm(instance=profile)
+    context = {'profile_form': form}
+
+    return render(request, 'accounts/edit_profile.html', context)
