@@ -13,6 +13,10 @@
         <p><strong>Date of Birth:</strong> {{ user.profile.dob }}</p>
         <a href="{% url 'edit_profile' %}">Edit Profile</a>
     </div>
+    <h2>Friends:</h2>
+    {% for friend in friends %}
+    <p>{{ friend }}</p>
+    {% endfor %}
 </div>
 
 <main class = 'posts'>

@@ -2,8 +2,10 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+
+
 class Friend(models.Model):
-    users = models.ManyToManyField(User,related_name='Friends')
+    users = models.ManyToManyField(User,related_name='friend_set')
     current_user = models.ForeignKey(User, related_name='owner', null=True, on_delete=models.CASCADE)
 
     @classmethod

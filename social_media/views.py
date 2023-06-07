@@ -7,6 +7,7 @@ from Core.models import SiteProfile
 from accounts.forms import EditPostForm
 from comments.forms import CommentForm
 from comments.models import Comment
+from friends.models import Friend
 from social_media.models import Post, Category
 
 
@@ -14,6 +15,7 @@ from social_media.models import Post, Category
 def posts(request, user_id):
     profile = SiteProfile.objects.all().first()
     user_posts = Post.objects.filter(author = user_id)
+    friends = Friend.objects.filter(current_user=request.user)
     context = {'posts':user_posts, 'profile':profile}
     return render(request,'accounts/dashboard.html', context=context)
 

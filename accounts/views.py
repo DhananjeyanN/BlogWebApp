@@ -60,11 +60,12 @@ def logout(request):
     return redirect('login')
 
 
-def dashboard(request):
+def dashboard(request, username):
     profile = SiteProfile.objects.all().first()
-    friends = Friend.objects.filter(current_user = request.user)
-    print(friends.first().users)
-    context = {'profile':profile}
+    user = get_object_or_404(User, username = username)
+    friends = user.friend_set.all()
+    print(list(friends), 'friendsss')
+    context = {'profile':profile, 'friends':friends}
     return render(request, 'accounts/dashboard.html', context=context)
 
 
@@ -135,7 +136,7 @@ def edit_profile(request):
 
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('dashboard', profile.username)
     else:
         form = ProfileForm(instance=profile)
     context = {'profile_form': form}
