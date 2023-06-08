@@ -15,7 +15,10 @@
     </div>
     <h2>Friends:</h2>
     {% for friend in friends %}
-    <p>{{ friend }}</p>
+    <div>
+        <img src="{{ friend.profile.avatar.url }} " alt="avatar" style="width:80px; height:80px; object-fit:cover; border-radius:80px;">
+        <a href="{% url 'profile' friend.profile.user.id %}">{{ friend }}</a>
+    </div>
     {% endfor %}
 </div>
 

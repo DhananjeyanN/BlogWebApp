@@ -60,11 +60,10 @@ def logout(request):
     return redirect('login')
 
 
-def dashboard(request, username):
+def dashboard(request):
     profile = SiteProfile.objects.all().first()
-    user = get_object_or_404(User, username = username)
-    friends = user.friend_set.all()
-    print(list(friends), 'friendsss')
+    friend_list = Friend.objects.get_or_create(current_user = request.user)[0]
+    friends = friend_list.users.all()
     context = {'profile':profile, 'friends':friends}
     return render(request, 'accounts/dashboard.html', context=context)
 
@@ -122,7 +121,10 @@ def login_(request):
 
 def profile(request, user_id):
     user_profile = get_object_or_404(User, id=user_id)
-    context = {'user_profile':user_profile}
+    posts = Post.objects.filter(author = user_profile)
+    friend_list = Friend.objects.get_or_create(current_user=request.user)[0]
+    friends = friend_list.users.all()
+    context = {'user_profile':user_profile, 'posts':posts, 'friends':friends}
     return render(request, 'accounts/profile.html',context)
 
 

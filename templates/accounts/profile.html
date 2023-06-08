@@ -11,7 +11,28 @@
         <p><strong>Last name:</strong> {{ user_profile.last_name }}</p>
         <p><strong>Email:</strong> {{ user_profile.email }}</p>
         <p><strong>Date of Birth:</strong> {{ user.profile.dob }}</p>
+        {% if user_profile in friends %}
+        <a href="{% url 'remove_friend' user_profile.id %}">Remove Friend</a>
+        {% else %}
         <a href="{% url 'add_friend' user_profile.id %}">Add Friend</a>
+        {% endif %}
     </div>
+    <main class = 'posts'>
+        {% for post in posts %}
+        <div class = 'post'>
+            <h2>
+                {{post.title}}
+            </h2>
+            <p>
+                {{post.content}}
+            </p>
+                <img src = '{{ post.image.url }}'>
+            <h4> posted by:{{post.author}}</h4>
+            <p>
+                <a href = "{% url 'edit_post' post.id %}" >Edit Post</a>
+            </p>
+        </div>
+        {% endfor %}
+    </main>
 </div>
 {% endblock %}

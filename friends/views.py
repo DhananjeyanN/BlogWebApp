@@ -8,10 +8,16 @@ from friends.models import Friend
 def add_friend(request, friend_id):
     user = request.user
     new_friend = User.objects.get(id=friend_id)
-    Friend.make_friend(user, new_friend)
-    print(user.friend_set.all(), 'adding friend')
+    friend_list,created=Friend.objects.get_or_create(current_user = user)
+    friend_list.users.add(new_friend)
+    return redirect('dashboard')
 
-    return redirect('dashboard', username = user.username)
+def remove_friend(request, friend_id):
+    user = request.user
+    new_friend = User.objects.get(id=friend_id)
+    friend_list,created = Friend.objects.get_or_create(current_user = user)
+    friend_list.users.remove(new_friend)
+    return redirect('dashboard')
 
 def make_friend():
     pass
